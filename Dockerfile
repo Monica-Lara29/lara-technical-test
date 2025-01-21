@@ -19,10 +19,11 @@ RUN apt-get update && apt-get install -y \
     curl \
     libzip-dev \
     libpq-dev \
-    libonig-dev \
+    libonig-dev \libicu-dev \ 
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd
-
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install intl
+    
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring zip exif pcntl
 
